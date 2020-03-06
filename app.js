@@ -1,9 +1,9 @@
-let width = 5;
-let height = 4;
+const width = 5;
+const height = 4;
 
-// This is deadstate board - all cells are 0
+// Make deadstate board - all cells are 0
 let deadState = (width, height) => {
-  const board = [];
+  let board = [];
   for (let h = 0; h < height; h++) {
     board.push([]);
     for (let w = 0; w < width; w++) {
@@ -15,31 +15,23 @@ let deadState = (width, height) => {
 
 // Build data structure to store the board state
 let randomState = (width, height) => {
-  const board = [];
+  let board = [];
   for (let h = 0; h < height; h++) {
     board.push([]);
     for (let w = 0; w < width; w++) {
       let randomNumber = Math.random();
-      let cellState = 0;
-      if (randomNumber > 0.6) {
-        cellState = 1;
-      }
-      //   board[h][w] = Math.floor(Math.random() * 2);
-      board[h][w] = cellState;
+      board[h][w] = randomNumber > 0.6 ? 1 : 0;
     }
   }
   return board;
 };
 
-// console.log(randomState(width, height));
-
-// 2. pretty print
+// Pretty print
 let render = state => {
   let lines = "";
   for (let h = 0; h < height; h++) {
     let line = "";
     for (let w = 0; w < width; w++) {
-      // console.log("state", state[h][w]);
       if (state[h][w] === 0) {
         line += " ";
       } else {
@@ -56,7 +48,7 @@ let render = state => {
 // Find sum of neighbor cells
 let findNeighborSum = (i, j, board) => {
   try {
-    return board[i][j] || 0;
+    return board[i][j] === 1 ? 1 : 0
   } catch {
     return 0;
   }
@@ -65,7 +57,6 @@ let findNeighborSum = (i, j, board) => {
 // Calculate the next move to find the next state of the board
 let iterateBoard = board => {
   render(board);
-  // console.log("first render", render(board));
   let copyBoard = deadState(width, height);
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[0].length; j++) {
@@ -98,8 +89,6 @@ let iterateBoard = board => {
     }
   }
   render(copyBoard);
-  // iterateBoard(copyBoard);
-  // return copyBoard;
 };
 
 let randomBoard = randomState(width, height);
