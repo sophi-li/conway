@@ -49,7 +49,8 @@ let render = state => {
 let findNeighborSum = (h, w, board) => {
   try {
     return board[h][w] === 1 ? 1 : 0;
-  } catch {
+  } catch (er) {
+    console.log(er);
     return 0;
   }
 };
