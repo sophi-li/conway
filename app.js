@@ -46,9 +46,9 @@ let render = state => {
 };
 
 // Find sum of neighbor cells
-let findNeighborSum = (i, j, board) => {
+let findNeighborSum = (h, w, board) => {
   try {
-    return board[i][j] === 1 ? 1 : 0
+    return board[h][w] === 1 ? 1 : 0;
   } catch {
     return 0;
   }
@@ -58,32 +58,32 @@ let findNeighborSum = (i, j, board) => {
 let iterateBoard = board => {
   render(board);
   let copyBoard = deadState(width, height);
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[0].length; j++) {
+  for (let h = 0; h < board.length; h++) {
+    for (let w = 0; w < board[0].length; w++) {
       let sum =
-        findNeighborSum(i - 1, j - 1, board) +
-        findNeighborSum(i - 1, j + 0, board) +
-        findNeighborSum(i - 1, j + 1, board) +
-        findNeighborSum(i - 0, j - 1, board) +
-        findNeighborSum(i - 0, j + 1, board) +
-        findNeighborSum(i + 1, j - 1, board) +
-        findNeighborSum(i + 1, j + 0, board) +
-        findNeighborSum(i + 1, j + 1, board);
+        findNeighborSum(h - 1, w - 1, board) +
+        findNeighborSum(h - 1, w + 0, board) +
+        findNeighborSum(h - 1, w + 1, board) +
+        findNeighborSum(h - 0, w - 1, board) +
+        findNeighborSum(h - 0, w + 1, board) +
+        findNeighborSum(h + 1, w - 1, board) +
+        findNeighborSum(h + 1, w + 0, board) +
+        findNeighborSum(h + 1, w + 1, board);
 
-      if (board[i][j] === 0) {
+      if (board[h][w] === 0) {
         if (sum === 3) {
-          copyBoard[i][j] = 1;
+          copyBoard[h][w] = 1;
         } else {
-          copyBoard[i][j] = 0;
+          copyBoard[h][w] = 0;
         }
       } else {
         if (sum === 0 || sum === 1) {
-          copyBoard[i][j] = 0;
+          copyBoard[h][w] = 0;
         }
         if (sum === 2 || sum === 3) {
-          copyBoard[i][j] = 1;
+          copyBoard[h][w] = 1;
         } else {
-          copyBoard[i][j] = 0;
+          copyBoard[w][w] = 0;
         }
       }
     }
