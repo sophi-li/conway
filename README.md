@@ -6,7 +6,7 @@
   </a>
 </p>
 
-> Just a simple Conway's Game of Life test project in Node.js
+> Conway's Game of Life project in Javascript
 
 ## Install
 
