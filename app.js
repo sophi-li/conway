@@ -83,7 +83,7 @@ let iterateBoard = board => {
         if (sum === 2 || sum === 3) {
           copyBoard[h][w] = 1;
         } else {
-          copyBoard[w][w] = 0;
+          copyBoard[h][w] = 0;
         }
       }
     }

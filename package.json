@@ -1,0 +1,23 @@
+{
+  "name": "conway",
+  "version": "1.0.0",
+  "description": "game of life",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sophi-li/conway.git"
+  },
+  "author": "Sophia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sophi-li/conway/issues"
+  },
+  "homepage": "https://github.com/sophi-li/conway#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "prettier": "1.19.1"
+  }
+}
